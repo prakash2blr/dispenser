@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/css/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/css/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<style type="text/css">
+#h2-header{
+    display: block;
+    width: 100%;
+    text-align: center;
+
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Aoushadhi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home.html">Buy<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Reports</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+	<div class="limiter">
+		<div class="container-login100">
+			<h2 id="h2-header">Prescription</h2>
+
+
+
+<form id="buy-form">
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="PIll1">PIll - 1</label> 
+    <div class="col-8">
+      <input id="PIll1" name="PIll - 1" placeholder="PIll1" type="number" min=0 class="form-control here">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="PIll2" class="col-4 col-form-label">PIll - 2</label> 
+    <div class="col-8">
+      <input id="PIll2" name="PIll2" placeholder="PIll - 2" type="number" min=0 class="form-control here">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="PIll3" class="col-4 col-form-label">PIll - 3</label> 
+    <div class="col-8">
+      <input id="PIll3" name="PIll3" placeholder="PIll - 3" type="number" min=0 class="form-control here">
+    </div>
+  </div> 
+  <div class="form-group row">
+  	<label for="" class="col-4 col-form-label"></label> 
+    <div class="col-8">
+      <button name="submit" type="submit" class="btn btn-primary">Buy</button>
+    </div>
+  </div>
+</form>
+
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="/js/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/moment.min.js"></script>
+	<script src="/js/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('#buy-form').on('submit',function(e){
+			e.preventDefault();
+			  var config = {
+    apiKey: "AIzaSyCbuXzRT9ISzW-xF9tz-6aX5sQzmPFlSQQ",
+    authDomain: "medicine-708a9.firebaseapp.com",
+    databaseURL: "https://medicine-708a9.firebaseio.com",
+    projectId: "medicine-708a9",
+    storageBucket: "medicine-708a9.appspot.com",
+    messagingSenderId: "652990862399"
+  };
+  firebase.initializeApp(config);
+  // var database = firebase.database();
+firebase.database().ref().set({
+    pill1: $('#PIll1').val(),
+    pill2: $('#PIll2').val(),
+    pill3 : $('#PIll3').val()
+  }, function(error) {
+    if (error) {
+      alert("something went wrong");
+    	
+    } else {
+      window.location.href="/payment.html";
+
+    }
+  });
+			
+		});
+	});
+
+	</script>
+
+</script>
+</body>
+</html>
